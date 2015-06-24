@@ -9,7 +9,7 @@
 
 ### Run an array of functions in parallel, but limit the number of tasks executing at the same time
 
-![parallel-limit](https://raw.githubusercontent.com/feross/run-parallel-limit/master/img.png) [![Sauce Test Status](https://saucelabs.com/browser-matrix/run-parallel-limit.svg)](https://saucelabs.com/u/run-parallel-limit)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/run-parallel-limit.svg)](https://saucelabs.com/u/run-parallel-limit)
 
 ### install
 
