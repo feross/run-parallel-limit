@@ -1,0 +1,50 @@
+{
+  "name": "run-parallel-limit",
+  "description": "Run an array of functions in parallel, but limit the number of tasks executing at the same time",
+  "version": "1.0.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/feross/run-parallel-limit/issues"
+  },
+  "dependencies": {
+    "dezalgo": "^1.0.1"
+  },
+  "devDependencies": {
+    "standard": "^4.3.2",
+    "tape": "^4.0.0",
+    "zuul": "^3.1.0"
+  },
+  "homepage": "https://github.com/feross/run-parallel-limit",
+  "keywords": [
+    "parallel",
+    "async",
+    "function",
+    "callback",
+    "asynchronous",
+    "run",
+    "array",
+    "run parallel",
+    "limit",
+    "max",
+    "queue",
+    "run parallel limit",
+    "max tasks",
+    "tasks"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feross/run-parallel-limit.git"
+  },
+  "scripts": {
+    "test": "standard && npm run test-node && npm run test-browser",
+    "test-browser": "zuul -- test/*.js",
+    "test-browser-local": "zuul --local -- test/*.js",
+    "test-node": "tape test/*.js"
+  }
+}
