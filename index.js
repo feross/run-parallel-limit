@@ -3,7 +3,7 @@ var dezalgo = require('dezalgo')
 module.exports = function (tasks, limit, cb) {
   if (cb) cb = dezalgo(cb)
   if (typeof limit !== 'number') throw new Error('second argument must be a Number')
-  var results, len, pending, keys
+  var results, len, pending, keys, isErrored
   if (Array.isArray(tasks)) {
     results = []
     pending = len = tasks.length
@@ -15,10 +15,11 @@ module.exports = function (tasks, limit, cb) {
 
   function done (i, err, result) {
     results[i] = result
+    if (err) isErrored = true
     if (--pending === 0 || err) {
       if (cb) cb(err, results)
       cb = null
-    } else if (cb && next < len) {
+    } else if (!isErrored && next < len) {
       var key
       if (keys) {
         key = keys[next]
