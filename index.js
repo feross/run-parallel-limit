@@ -1,9 +1,8 @@
-var dezalgo = require('dezalgo')
-
 module.exports = function (tasks, limit, cb) {
-  if (cb) cb = dezalgo(cb)
   if (typeof limit !== 'number') throw new Error('second argument must be a Number')
   var results, len, pending, keys, isErrored
+  var isSync = true
+
   if (Array.isArray(tasks)) {
     results = []
     pending = len = tasks.length
@@ -13,22 +12,30 @@ module.exports = function (tasks, limit, cb) {
     pending = len = keys.length
   }
 
-  function done (i, err, result) {
+  function done (err) {
+    function end () {
+      if (cb) cb(err, results)
+      cb = null
+    }
+    if (isSync) process.nextTick(end)
+    else end()
+  }
+
+  function each (i, err, result) {
     results[i] = result
     if (err) isErrored = true
     if (--pending === 0 || err) {
-      if (cb) cb(err, results)
-      cb = null
+      done(err)
     } else if (!isErrored && next < len) {
       var key
       if (keys) {
         key = keys[next]
         next += 1
-        tasks[key](done.bind(undefined, key))
+        tasks[key](each.bind(undefined, key))
       } else {
         key = next
         next += 1
-        tasks[key](done.bind(undefined, key))
+        tasks[key](each.bind(undefined, key))
       }
     }
   }
@@ -36,19 +43,20 @@ module.exports = function (tasks, limit, cb) {
   var next = limit
   if (!pending) {
     // empty
-    if (cb) cb(null, results)
-    cb = null
+    done(null)
   } else if (keys) {
     // object
     keys.some(function (key, i) {
-      tasks[key](done.bind(undefined, key))
+      tasks[key](each.bind(undefined, key))
       if (i === limit - 1) return true // early return
     })
   } else {
     // array
     tasks.some(function (task, i) {
-      task(done.bind(undefined, i))
+      task(each.bind(undefined, i))
       if (i === limit - 1) return true // early return
     })
   }
+
+  isSync = false
 }
