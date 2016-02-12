@@ -1,10 +1,10 @@
 # run-parallel-limit [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
 
-[travis-image]: https://img.shields.io/travis/feross/run-parallel-limit.svg?style=flat
+[travis-image]: https://img.shields.io/travis/feross/run-parallel-limit/master.svg
 [travis-url]: https://travis-ci.org/feross/run-parallel-limit
-[npm-image]: https://img.shields.io/npm/v/run-parallel-limit.svg?style=flat
+[npm-image]: https://img.shields.io/npm/v/run-parallel-limit.svg
 [npm-url]: https://npmjs.org/package/run-parallel-limit
-[downloads-image]: https://img.shields.io/npm/dm/run-parallel-limit.svg?style=flat
+[downloads-image]: https://img.shields.io/npm/dm/run-parallel-limit.svg
 [downloads-url]: https://npmjs.org/package/run-parallel-limit
 
 ### Run an array of functions in parallel, but limit the number of tasks executing at the same time
