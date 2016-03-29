@@ -31,11 +31,11 @@ module.exports = function (tasks, limit, cb) {
       if (keys) {
         key = keys[next]
         next += 1
-        tasks[key](each.bind(undefined, key))
+        tasks[key](function (err, result) { each(key, err, result) })
       } else {
         key = next
         next += 1
-        tasks[key](each.bind(undefined, key))
+        tasks[key](function (err, result) { each(key, err, result) })
       }
     }
   }
@@ -47,13 +47,13 @@ module.exports = function (tasks, limit, cb) {
   } else if (keys) {
     // object
     keys.some(function (key, i) {
-      tasks[key](each.bind(undefined, key))
+      tasks[key](function (err, result) { each(key, err, result) })
       if (i === limit - 1) return true // early return
     })
   } else {
     // array
     tasks.some(function (task, i) {
-      task(each.bind(undefined, i))
+      task(function (err, result) { each(i, err, result) })
       if (i === limit - 1) return true // early return
     })
   }
