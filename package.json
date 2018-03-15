@@ -1,7 +1,7 @@
 {
   "name": "run-parallel-limit",
   "description": "Run an array of functions in parallel, but limit the number of tasks executing at the same time",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": {
     "name": "Feross Aboukhadijeh",
     "email": "feross@feross.org",
