@@ -1,4 +1,6 @@
-module.exports = function (tasks, limit, cb) {
+module.exports = runParallelLimit
+
+function runParallelLimit (tasks, limit, cb) {
   if (typeof limit !== 'number') throw new Error('second argument must be a Number')
   var results, len, pending, keys, isErrored
   var isSync = true
