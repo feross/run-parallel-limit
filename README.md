@@ -11,7 +11,7 @@
 
 ### Run an array of functions in parallel, but limit the number of tasks executing at the same time
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/run-parallel-limit.svg)](https://saucelabs.com/u/run-parallel-limit)
+![run-parallel-limit](img.png) [![Sauce Test Status](https://saucelabs.com/browser-matrix/run-parallel-limit.svg)](https://saucelabs.com/u/run-parallel-limit)
 
 ### install
 
