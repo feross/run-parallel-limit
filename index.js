@@ -1,3 +1,4 @@
+/*! run-parallel-limit. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 module.exports = runParallelLimit
 
 function runParallelLimit (tasks, limit, cb) {
