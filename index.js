@@ -52,12 +52,14 @@ function runParallelLimit (tasks, limit, cb) {
     keys.some(function (key, i) {
       tasks[key](function (err, result) { each(key, err, result) })
       if (i === limit - 1) return true // early return
+      return false
     })
   } else {
     // array
     tasks.some(function (task, i) {
       task(function (err, result) { each(i, err, result) })
       if (i === limit - 1) return true // early return
+      return false
     })
   }
 
