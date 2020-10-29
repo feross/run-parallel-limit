@@ -3,8 +3,9 @@ module.exports = runParallelLimit
 
 function runParallelLimit (tasks, limit, cb) {
   if (typeof limit !== 'number') throw new Error('second argument must be a Number')
-  var results, len, pending, keys, isErrored
-  var isSync = true
+  let results, len, pending, keys, isErrored
+  let isSync = true
+  let next
 
   if (Array.isArray(tasks)) {
     results = []
@@ -30,7 +31,7 @@ function runParallelLimit (tasks, limit, cb) {
     if (--pending === 0 || err) {
       done(err)
     } else if (!isErrored && next < len) {
-      var key
+      let key
       if (keys) {
         key = keys[next]
         next += 1
@@ -43,7 +44,7 @@ function runParallelLimit (tasks, limit, cb) {
     }
   }
 
-  var next = limit
+  next = limit
   if (!pending) {
     // empty
     done(null)

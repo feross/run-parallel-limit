@@ -1,10 +1,10 @@
-var parallelLimit = require('../')
-var test = require('tape')
+const parallelLimit = require('../')
+const test = require('tape')
 
 test('no callbacks at all (array)', function (t) {
   t.plan(2)
 
-  var tasks = [
+  const tasks = [
     function (cb) {
       t.pass('cb 1')
     },
@@ -19,7 +19,7 @@ test('no callbacks at all (array)', function (t) {
 test('no callbacks at all (object)', function (t) {
   t.plan(2)
 
-  var tasks = {
+  const tasks = {
     one: function (cb) {
       t.pass('cb 1')
     },
@@ -34,7 +34,7 @@ test('no callbacks at all (object)', function (t) {
 test('no final callback (object)', function (t) {
   t.plan(2)
 
-  var tasks = {
+  const tasks = {
     one: function (cb) {
       t.pass('cb 1')
       cb()
