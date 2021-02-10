@@ -1,6 +1,8 @@
 /*! run-parallel-limit. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 module.exports = runParallelLimit
 
+const queueMicrotask = require('queue-microtask')
+
 function runParallelLimit (tasks, limit, cb) {
   if (typeof limit !== 'number') throw new Error('second argument must be a Number')
   let results, len, pending, keys, isErrored
@@ -21,7 +23,7 @@ function runParallelLimit (tasks, limit, cb) {
       if (cb) cb(err, results)
       cb = null
     }
-    if (isSync) process.nextTick(end)
+    if (isSync) queueMicrotask(end)
     else end()
   }
 
